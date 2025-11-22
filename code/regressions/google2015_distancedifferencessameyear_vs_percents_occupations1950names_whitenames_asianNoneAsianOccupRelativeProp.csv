@@ -1,0 +1,11 @@
+,,0
+params,Asian Occupation $\%$ Difference,0.0010952446937796264
+params,const,0.05407720953699764
+params,_f_test,5.2445956673016285
+pvals,Asian Occupation $\%$ Difference,0.02542977416098404
+pvals,const,0.1810853165105051
+pvals,_f_test,0.02542977416098383
+std,Asian Occupation $\%$ Difference,0.00047825019070292426
+std,const,0.039979197535245994
+statistics,adj_r2,0.06312173677572741
+statistics,r2,0.07799282031896981

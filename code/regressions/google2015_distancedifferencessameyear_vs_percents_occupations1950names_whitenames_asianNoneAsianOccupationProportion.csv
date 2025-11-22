@@ -1,0 +1,11 @@
+,,0
+params,Asian Occupation Logit Prop,0.015687253971323895
+params,const,0.0038225548611290007
+params,_f_test,4.092102638010507
+pvals,Asian Occupation Logit Prop,0.04740191309749105
+pvals,const,0.8544933118621064
+pvals,_f_test,0.04740191309749154
+std,Asian Occupation Logit Prop,0.00775485476454797
+std,const,0.020757333623818895
+statistics,adj_r2,0.046784752104893634
+statistics,r2,0.06191515286513338

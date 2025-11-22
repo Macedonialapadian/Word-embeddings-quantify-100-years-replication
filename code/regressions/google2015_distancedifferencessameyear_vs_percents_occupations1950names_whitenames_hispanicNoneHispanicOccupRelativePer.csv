@@ -1,0 +1,11 @@
+,,0
+params,Hispanic Occupation $\%$ Difference,0.000958502850084957
+params,const,0.04383647499365633
+params,_f_test,6.01213577015812
+pvals,Hispanic Occupation $\%$ Difference,0.017037771168492206
+pvals,const,0.11681255938031979
+pvals,_f_test,0.017037771168492415
+std,Hispanic Occupation $\%$ Difference,0.00039091201479026075
+std,const,0.027561737428548408
+statistics,adj_r2,0.07369472688074752
+statistics,r2,0.0883979851842277

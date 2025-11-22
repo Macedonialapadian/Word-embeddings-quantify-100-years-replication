@@ -1,0 +1,11 @@
+,,0
+params,Women Occupation Logit Prop,0.012048461820699045
+params,const,0.029327864147409767
+params,_f_test,7.885905209686793
+pvals,Women Occupation Logit Prop,0.00659785237235825
+pvals,const,2.3357404521103846e-05
+pvals,_f_test,0.006597852372358208
+std,Women Occupation Logit Prop,0.004290479483458131
+std,const,0.006426371277758373
+statistics,adj_r2,0.09578936496105916
+statistics,r2,0.1097002978078121
