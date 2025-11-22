@@ -42,7 +42,7 @@ def do_over_time_trend_test(row, label='', neutral_words='', group1='male', grou
     stryrstodo = ''
     for yr in yrs_to_do: stryrstodo+=str(yr)
     if limit_to_certain_words:
-        limit_words = list(open('data/'+limit_words_file + '.txt', 'r'))
+        limit_words = list(open('../data/word_lists/'+limit_words_file + '.txt', 'r'))
         limit_words = [word.strip() for word in limit_words]
         print(limit_words)
 
@@ -72,7 +72,7 @@ def plot_averagebias_over_time_consistentoccupations(row, label='', neutral_word
     if yrs_to_do is None: yrs_to_do = yrs
 
     if limit_to_certain_words:
-        limit_words = list(open('data/'+limit_words_file + '.txt', 'r'))
+        limit_words = list(open('../data/word_lists/'+limit_words_file + '.txt', 'r'))
         limit_words = [word.strip() for word in limit_words]
         print(limit_words)
 
@@ -566,13 +566,13 @@ def overtime_scatter_errorusingallotheryears(x, y, years_all, label, xlabel='', 
     plt.savefig(plotsfolder + 'regression_allyears_withoutscatter{}.{}'.format(label, saveformat), dpi=1000)
     plt.close()
 
-def residual_analysis_with_stereotypes(row, label, neutral_list_name='occupations1950', group1='male_pairs', group2='female_pairs', occ_percents_file='data/occupation_percentages_gender_occ1950.csv', load_objective_data=load_occupationpercent_data, occ_func=occupation_func_female_percent, stereotype_file='data/mturk_stereotypes.csv', load_stereotype_data=load_mturkstereotype_data, norm_type='norm', saveformat='pdf'):
+def residual_analysis_with_stereotypes(row, label, neutral_list_name='occupations1950', group1='male_pairs', group2='female_pairs', occ_percents_file='../data/word_lists/occupation_percentages_gender_occ1950.csv', load_objective_data=load_occupationpercent_data, occ_func=occupation_func_female_percent, stereotype_file='../data/word_lists/mturk_stereotypes.csv', load_stereotype_data=load_mturkstereotype_data, norm_type='norm', saveformat='pdf'):
 
     differences, differences_cossim = get_biases_individual(row, label=label, neutral_words=neutral_list_name, group1=group1, group2=group2)
     occpercents, occ_weights = load_objective_data(occ_percents_file, occ_func, yrs_to_do=get_years(label))
     stereotypescores = load_mturkstereotype_data(stereotype_file)
 
-    limitto = [o.strip() for o in list(open('data/' + 'occupationsMturk' + '.txt', 'r'))]
+    limitto = [o.strip() for o in list(open('../data/word_lists/' + 'occupationsMturk' + '.txt', 'r'))]
 
     embedding_difs = []
     occ_props = []
@@ -642,7 +642,7 @@ def residual_analysis_with_stereotypes(row, label, neutral_list_name='occupation
     print(model.summary().as_latex())
     print(model.pvalues)
 
-def scatter_occupation_percents_distances(row, label, neutral_list_name='occupations1950', group1='male_pairs', group2='female_pairs', index=0, occ_percents_file='data/occupation_percentages_gender_occ1950.csv', load_objective_data=load_occupationpercent_data, occ_func=occupation_func_female_percent, ylim=[-6, 6], xlim=[-.15, .15], do_regression_with_counts=False, condensed_print=False, norm_type='norm', saveformat='pdf', toskip=[], limitfile=None):
+def scatter_occupation_percents_distances(row, label, neutral_list_name='occupations1950', group1='male_pairs', group2='female_pairs', index=0, occ_percents_file='../data/word_lists/occupation_percentages_gender_occ1950.csv', load_objective_data=load_occupationpercent_data, occ_func=occupation_func_female_percent, ylim=[-6, 6], xlim=[-.15, .15], do_regression_with_counts=False, condensed_print=False, norm_type='norm', saveformat='pdf', toskip=[], limitfile=None):
 
     differences, differences_cossim = get_biases_individual(row, label=label, neutral_words=neutral_list_name, group1=group1, group2=group2)
     occpercents, occ_weights = load_objective_data(occ_percents_file, occ_func, yrs_to_do=get_years(label))
@@ -652,7 +652,7 @@ def scatter_occupation_percents_distances(row, label, neutral_list_name='occupat
 
     limitto = None
     if limitfile is not None:
-        limitto = [o.strip() for o in list(open('data/' + limitfile + '.txt', 'r'))]
+        limitto = [o.strip() for o in list(open('../data/word_lists/' + limitfile + '.txt', 'r'))]
 
     scatter_vals = [[], []]
     occ_freq_counts = []
@@ -742,9 +742,9 @@ def princeton_trilogy_plots(row, label, group1em, group2em, group2princeton):
     yr_indices = [2, 4, 5]
     #load the stereotypes csv file
     sscores = {}
-    with open('data/adjectives_princeton.txt', 'r') as f:
+    with open('../data/word_lists/adjectives_princeton.txt', 'r') as f:
         allwords = [x[0] for x in list(csv.reader(f))]
-    with open('data/princeton_stereotypes.csv', 'r') as f:
+    with open('../data/word_lists/princeton_stereotypes.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             yrdict = sscores.get(row['group'], {})
@@ -878,7 +878,7 @@ def plot_scatter_and_regression(x, y, label, xlabel='', ylabel='', sizes=None, y
         print(model.summary().as_latex())
         print(model.pvalues)
         df_save = summarize_model(model)
-        df_save.to_csv('regressions/{}withyears.csv'.format(label))
+        df_save.to_csv('../output/regressions/{}withyears.csv'.format(label))
 
         df = pd.DataFrame([y, x])
         df = df.transpose()
@@ -907,7 +907,7 @@ def plot_scatter_and_regression(x, y, label, xlabel='', ylabel='', sizes=None, y
     print(model.pvalues)
 
     df_save = summarize_model(model)
-    df_save.to_csv('regressions/{}.csv'.format(label))
+    df_save.to_csv('../output/regressions/{}.csv'.format(label))
 
 def summarize_model(model_result):
     '''
@@ -946,7 +946,7 @@ def plot_mean_counts_together(row, label, wordlists, printlabel):
     plt.xlabel('Year')
     plt.yscale('log')
     lgd = plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.savefig('plots/appendix/avgfreqovertime_{}{}.pdf'.format(
+    plt.savefig('../output/plots/appendix/avgfreqovertime_{}{}.pdf'.format(
         label, printlabel), bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.close()
 
@@ -962,7 +962,7 @@ def plot_vector_variances_together(row, label, wordlists, printlabel):
     plt.ylabel('Group vector variance')
     plt.xlabel('Year')
     lgd = plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.savefig('plots/appendix/varianceovertime_{}{}.pdf'.format(
+    plt.savefig('../output/plots/appendix/varianceovertime_{}{}.pdf'.format(
         label, printlabel), bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.close()
 
@@ -989,7 +989,7 @@ def vocab_counts(row, label, wordlist, plot=False, indices=None):
     if plot:
         plt.yscale('log')
         plt.tight_layout()
-        plt.savefig('plots/freqovertime_{}{}.pdf'.format(
+        plt.savefig('../output/plots/freqovertime_{}{}.pdf'.format(
             label, wordlist))
         plt.close()
     mean_freqs = np.mean(all_freqs, axis=0)
@@ -998,6 +998,6 @@ def vocab_counts(row, label, wordlist, plot=False, indices=None):
         plt.plot(get_years(label), mean_freqs)
         plt.yscale('log')
         plt.tight_layout()
-        plt.savefig('plots/avgfreqovertime_{}{}.pdf'.format(
+        plt.savefig('../output/plots/avgfreqovertime_{}{}.pdf'.format(
             label, wordlist))
         plt.close()

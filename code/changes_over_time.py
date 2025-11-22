@@ -199,7 +199,7 @@ def get_vector_variance(vectors_over_time, words, vocabd = None, word1lims = [50
 
 def main(filenames, label, csvname = None, neutral_lists = [], group_lists = ['male_pairs', 'female_pairs'], do_individual_group_words = False, do_individual_neutral_words = False, do_cross_individual = False):
 
-    vocabs = [fi.replace('vectors/normalized_clean/vectors', 'vectors/normalized_clean/vocab/vocab') for fi in filenames]
+    vocabs = [fi.replace('normalized_clean/vectors', 'normalized_clean/vocab/vocab') for fi in filenames]
     vocabd = [load_vocab(fi) for fi in vocabs]
 
     d = {}
@@ -209,13 +209,13 @@ def main(filenames, label, csvname = None, neutral_lists = [], group_lists = ['m
     d['variance_over_time'] = {}
 
     for grouplist in group_lists:
-        with open('data/'+grouplist + '.txt', 'r') as f2:
+        with open('../data/word_lists/'+grouplist + '.txt', 'r') as f2:
             groupwords = [x.strip() for x in list(f2)]
             d['counts_all'][grouplist] = get_counts_dictionary(vocabd, groupwords)
             d['variance_over_time'][grouplist] = get_vector_variance(vectors_over_time, groupwords)
 
     for neuten, neut in enumerate(neutral_lists):
-        with open('data/'+neut + '.txt', 'r') as f:
+        with open('../data/word_lists/'+neut + '.txt', 'r') as f:
             neutwords = [x.strip() for x in list(f)]
 
             d['counts_all'][neut] = get_counts_dictionary(vocabd, neutwords)
@@ -224,7 +224,7 @@ def main(filenames, label, csvname = None, neutral_lists = [], group_lists = ['m
             dloc_neutral = {}
 
             for grouplist in group_lists:
-                with open('data/'+grouplist + '.txt', 'r') as f2:
+                with open('../data/word_lists/'+grouplist + '.txt', 'r') as f2:
                     print(neut, grouplist)
                     groupwords = [x.strip() for x in list(f2)]
                     distances = single_set_distances_to_single_set(vectors_over_time, neutwords, groupwords, vocabd)
@@ -254,7 +254,7 @@ def main(filenames, label, csvname = None, neutral_lists = [], group_lists = ['m
             d['indiv_distances_neutral_'+neut] = dloc_neutral
     # the original here is:
     # with open('run_results/'+csvname, 'ab') as cf:
-    with open('run_results/'+csvname, 'a', newline='') as cf:
+    with open('../output/run_results/'+csvname, 'a', newline='') as cf:
         headerorder = ['datetime', 'label']
         headerorder.extend(sorted(list(d.keys())))
         print(headerorder)
@@ -268,7 +268,7 @@ def main(filenames, label, csvname = None, neutral_lists = [], group_lists = ['m
 
 # i changed the path, the origianl is:
 # folder = '../vectors/normalized_clean/'
-folder = 'vectors/normalized_clean/'
+folder = '../data/vectors/normalized_clean/'
 
 #filenames_nyt = [folder + 'vectorsnyt{}-{}.txt'.format(x, x+3) for x in range(1987, 2005, 1)]
 filenames_sgns = [folder + 'vectors_sgns{}.txt'.format(x) for x in range(1910, 2000, 10)]

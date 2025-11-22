@@ -27,8 +27,8 @@ from plot_creation import *
 
 pretty_axis_labels = {'male_pairs': 'Men', 'female_pairs': 'Women', 'names_asian': 'Asian', 'names_white': 'White', 'names_hispanic': 'Hispanic'}
 
-def main(filenametodo='run_results/finalrun.csv'):
-    plots_folder = 'plots/'
+def main(filenametodo='../output/run_results/finalrun.csv'):
+    plots_folder = '../output/plots/'
     set_plots_folder(plots_folder)
 
     rows = load_file(filenametodo)
@@ -36,18 +36,18 @@ def main(filenametodo='run_results/finalrun.csv'):
     print(rows.keys())
 
     plots_to_do_gender_static = [
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.15, .15], [-100, 100], False, False, 'norm', 'png']],
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.15, .15], [-5, 3], False, False, 'norm', 'pdf']],
-        [residual_analysis_with_stereotypes, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, 'data/mturk_stereotypes.csv', load_mturkstereotype_data, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.15, .15], [-100, 100], False, False, 'norm', 'png']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.15, .15], [-5, 3], False, False, 'norm', 'pdf']],
+        [residual_analysis_with_stereotypes, [rows['google'], 'google', 'occupations1950', 'male_pairs', 'female_pairs', '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, '../data/word_lists/mturk_stereotypes.csv', load_mturkstereotype_data, 'norm', 'pdf']],
     ]
 
     plots_to_do_gender_dynamic = [
-        [plot_overtime_scatter, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', 'data/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, None, None, False, None, None]],
-        [plot_overtime_scatter, [rows['svd'], 'svd', 'occupations1950', 'male_pairs', 'female_pairs', 'data/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, None, None, False, None, None]],
+        [plot_overtime_scatter, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', '../data/word_lists/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, None, None, False, None, None]],
+        [plot_overtime_scatter, [rows['svd'], 'svd', 'occupations1950', 'male_pairs', 'female_pairs', '../data/word_lists/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, None, None, False, None, None]],
 
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', True, 'data/occupation_percentages_gender_occ1950.csv', occupation_func_female_logitprop, 0, False, '', None, None, False]],
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', True, 'data/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, 0, False, '', None, None, False]],
-        [plot_averagebias_over_time_consistentoccupations, [rows['svd'], 'svd', 'occupations1950', 'male_pairs', 'female_pairs', True, 'data/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', True, '../data/word_lists/occupation_percentages_gender_occ1950.csv', occupation_func_female_logitprop, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', True, '../data/word_lists/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['svd'], 'svd', 'occupations1950', 'male_pairs', 'female_pairs', True, '../data/word_lists/occupation_percentages_gender_occ1950.csv', occupation_func_female_percent, 0, False, '', None, None, False]],
         [create_cross_time_correlation_heatmap_differencestoself, [rows['sgns'], 'sgns', 'personalitytraits_original', 'male_pairs', 'female_pairs', None, 'pdf']],
         [create_cross_time_correlation_heatmap_differencestoself, [rows['svd'], 'svd', 'personalitytraits_original', 'male_pairs', 'female_pairs', None, 'pdf']],
         [create_cross_time_correlation_heatmap_differencestoself, [rows['sgns'], 'sgns', 'occupations1950', 'male_pairs', 'female_pairs', None, 'pdf']],
@@ -58,10 +58,10 @@ def main(filenametodo='run_results/finalrun.csv'):
         [create_cross_time_correlation_heatmap_differencestoself, [rows['sgns'], 'sgns', 'personalitytraits_original', 'names_white', 'names_hispanic', None, 'pdf']],
         [create_cross_time_correlation_heatmap_differencestoself, [rows['sgns'], 'sgns', 'personalitytraits_original', 'names_white', 'names_asian']],
         [create_cross_time_correlation_heatmap_differencestoself, [rows['sgns'], 'sgns', 'personalitytraits_original', 'names_white', 'names_russian']],
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_asian', True, 'data/occupation_percentages_race_occ1950.csv', occupation_func_whiteasian_logitprop, 0, False, '', None, None, False]],
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_asian', True, 'data/occupation_percentages_race_occ1950.csv', occupation_func_whiteasian_percent, 0, False, '', None, None, False]],
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_hispanic', True, 'data/occupation_percentages_race_occ1950.csv', occupation_func_whitehispanic_logitprop, 0, False, '', None, None, False]],
-        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_hispanic', True, 'data/occupation_percentages_race_occ1950.csv', occupation_func_whitehispanic_percent, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_asian', True, '../data/word_lists/occupation_percentages_race_occ1950.csv', occupation_func_whiteasian_logitprop, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_asian', True, '../data/word_lists/occupation_percentages_race_occ1950.csv', occupation_func_whiteasian_percent, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_hispanic', True, '../data/word_lists/occupation_percentages_race_occ1950.csv', occupation_func_whitehispanic_logitprop, 0, False, '', None, None, False]],
+        [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'occupations1950', 'names_white', 'names_hispanic', True, '../data/word_lists/occupation_percentages_race_occ1950.csv', occupation_func_whitehispanic_percent, 0, False, '', None, None, False]],
     #   [plot_averagebias_over_time_consistentoccupations, [rows['nyt'], 'nyt', 'words_terrorism', 'words_christianity', 'words_islam', False, None, None, 0, False, '', None, None, False, '', None, 1]],
         [plot_averagebias_over_time_consistentoccupations, [rows['sgns'], 'sgns', 'adjectives_otherization', 'names_white', 'names_asian', False]],
 
@@ -75,30 +75,30 @@ def main(filenametodo='run_results/finalrun.csv'):
     ]
 
     plots_to_do_appendix_gender_static = [
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950_professional', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.15, .15], [-100, 100], False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950_professional', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.15, .15], [-5, 3], False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['commoncrawlglove'], 'commoncrawlglove', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.07, .07], [-100, 100], False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['commoncrawlglove'], 'commoncrawlglove', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.07, .07], [-5, 3], False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['wikipedia'], 'wikipedia', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.07, .07], [-100, 100], False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['wikipedia'], 'wikipedia', 'occupations1950', 'male_pairs', 'female_pairs', -1, 'data/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.07, .07], [-5, 3], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950_professional', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.15, .15], [-100, 100], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950_professional', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.15, .15], [-5, 3], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['commoncrawlglove'], 'commoncrawlglove', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.07, .07], [-100, 100], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['commoncrawlglove'], 'commoncrawlglove', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.07, .07], [-5, 3], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['wikipedia'], 'wikipedia', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_percent, [-.07, .07], [-100, 100], False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['wikipedia'], 'wikipedia', 'occupations1950', 'male_pairs', 'female_pairs', -1, '../data/word_lists/occupation_percentages_gender_occ1950.csv', load_occupationpercent_data, occupation_func_female_logitprop, [-.07, .07], [-5, 3], False, False, 'norm', 'pdf']],
         #
-        [scatter_occupation_percents_distances, [rows['sgns'], 'sgns', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -1, 'data/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
-        [scatter_occupation_percents_distances, [rows['sgns'], 'sgns', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -3, 'data/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
+        [scatter_occupation_percents_distances, [rows['sgns'], 'sgns', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -1, '../data/word_lists/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
+        [scatter_occupation_percents_distances, [rows['sgns'], 'sgns', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -3, '../data/word_lists/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
         #
-        [scatter_occupation_percents_distances, [rows['svd'], 'svd', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -1, 'data/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
-        [scatter_occupation_percents_distances, [rows['svd'], 'svd', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -3, 'data/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
+        [scatter_occupation_percents_distances, [rows['svd'], 'svd', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -1, '../data/word_lists/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
+        [scatter_occupation_percents_distances, [rows['svd'], 'svd', 'adjectives_williamsbest', 'male_pairs', 'female_pairs', -3, '../data/word_lists/adjectives_williamsbest.csv', load_williamsbestadjectives, occupation_func_williamsbestadject, None, [-500, 500], True, False, 'norm']],
     ]
 
     plots_to_do_appendix_raceasian_static = [
         [princeton_trilogy_plots, [rows['sgns'], 'sgns', 'names_white', 'names_chinese', 'chinese']],
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_asian', -1, 'data/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whiteasian_logitprop, None, None, False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_asian', -1, 'data/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whiteasian_percent, None, None, False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_asian', -1, '../data/word_lists/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whiteasian_logitprop, None, None, False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_asian', -1, '../data/word_lists/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whiteasian_percent, None, None, False, False, 'norm', 'pdf']],
 
     ]
 
     plots_to_do_appendix_racehispanic_static = [
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_hispanic', -1, 'data/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whitehispanic_logitprop, None, None, False, False, 'norm', 'pdf']],
-        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_hispanic', -1, 'data/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whitehispanic_percent, None, None, False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_hispanic', -1, '../data/word_lists/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whitehispanic_logitprop, None, None, False, False, 'norm', 'pdf']],
+        [scatter_occupation_percents_distances, [rows['google'], 'google', 'occupations1950', 'names_white', 'names_hispanic', -1, '../data/word_lists/occupation_percentages_race_occ1950.csv', load_occupationpercent_data, occupation_func_whitehispanic_percent, None, None, False, False, 'norm', 'pdf']],
 
     ]
 
