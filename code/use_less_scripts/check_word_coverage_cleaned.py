@@ -446,8 +446,8 @@ def save_quality_summary_csv(all_validation_stats, output_file):
 
 if __name__ == "__main__":
     # Configuration
-    data_folder = "data"  # Your data folder path
-    vectors_dir = "vectors/normalized_clean"  # Your vectors directory
+    data_folder = "../../data/word_lists"  # Your data folder path
+    vectors_dir = "../../data/vectors/normalized_clean"  # Your vectors directory
     
     # Discover all vector files
     print("Discovering vector files...")

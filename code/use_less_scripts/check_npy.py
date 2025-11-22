@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "vectors/raw/sgns/1910-w.npy"
+filename = "../../data/vectors/raw/sgns/1910-w.npy"
 
 arr = np.load(filename)
 
