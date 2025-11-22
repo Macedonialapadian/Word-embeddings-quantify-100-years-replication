@@ -42,8 +42,8 @@ def save_files(yrs, oldloc, newloc, label):
 
 if __name__ == "__main__":
     yrs = range(1910, 2000, 10)
-    newloc = 'vectors/normalized_clean/'
-    svd_loc = 'vectors/raw/svd/'
+    newloc = '../data/vectors/normalized_clean/'
+    svd_loc = '../data/vectors/raw/svd/'
     save_files(yrs, svd_loc, newloc, 'svd')
-    sgns_loc = 'vectors/raw/sgns/'
+    sgns_loc = '../data/vectors/raw/sgns/'
     save_files(yrs, sgns_loc, newloc, 'sgns')

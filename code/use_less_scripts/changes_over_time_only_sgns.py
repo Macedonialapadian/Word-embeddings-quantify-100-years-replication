@@ -46,8 +46,8 @@ def run_sgns_analysis(filenames_sgns, label, neutral_lists, group_lists,
     print(f"  Files: {filenames_sgns}")
     
     # Load vocab files
-    vocabs = [fi.replace('vectors/normalized_clean/vectors', 
-                        'vectors/normalized_clean/vocab/vocab') 
+    vocabs = [fi.replace('normalized_clean/vectors',
+                        'normalized_clean/vocab/vocab')
               for fi in filenames_sgns]
     vocabd = [load_vocab(fi) for fi in vocabs]
     
@@ -62,7 +62,7 @@ def run_sgns_analysis(filenames_sgns, label, neutral_lists, group_lists,
     
     # Process group lists
     for grouplist in group_lists:
-        with open(f'data/{grouplist}.txt', 'r') as f2:
+        with open(f'../../data/word_lists/{grouplist}.txt', 'r') as f2:
             groupwords = [x.strip() for x in list(f2)]
             d['counts_all'][grouplist] = get_counts_dictionary(vocabd, groupwords)
             d['variance_over_time'][grouplist] = get_vector_variance(
@@ -71,7 +71,7 @@ def run_sgns_analysis(filenames_sgns, label, neutral_lists, group_lists,
     
     # Process neutral lists
     for neut in neutral_lists:
-        with open(f'data/{neut}.txt', 'r') as f:
+        with open(f'../../data/word_lists/{neut}.txt', 'r') as f:
             neutwords = [x.strip() for x in list(f)]
             
             d['counts_all'][neut] = get_counts_dictionary(vocabd, neutwords)
@@ -82,7 +82,7 @@ def run_sgns_analysis(filenames_sgns, label, neutral_lists, group_lists,
             dloc_neutral = {}
             
             for grouplist in group_lists:
-                with open(f'data/{grouplist}.txt', 'r') as f2:
+                with open(f'../../data/word_lists/{grouplist}.txt', 'r') as f2:
                     print(f'  Processing {neut} vs {grouplist}')
                     groupwords = [x.strip() for x in list(f2)]
                     distances = single_set_distances_to_single_set(
@@ -174,7 +174,7 @@ def update_finalrun_csv(original_csv_path, output_csv_path):
     print(f"  group_lists: {group_lists}")
     
     # Define SGNS files
-    folder = 'vectors/normalized_clean/'
+    folder = '../../data/vectors/normalized_clean/'
     filenames_sgns = [folder + f'vectors_sgns{x}.txt' for x in range(1910, 2000, 10)]
     
     # Run SGNS analysis
@@ -223,11 +223,11 @@ def update_finalrun_csv(original_csv_path, output_csv_path):
 def main():
     """Main function"""
     # File paths - look in run_results folder where original script writes
-    original_csv = 'run_results/finalrun.csv'
-    output_csv = 'run_results/finalrun_updated.csv'
-    
+    original_csv = '../../output/run_results/finalrun.csv'
+    output_csv = '../../output/run_results/finalrun_updated.csv'
+
     # Check if run_results directory exists
-    if not os.path.exists('run_results'):
+    if not os.path.exists('../../output/run_results'):
         print("ERROR: run_results/ directory not found")
         print("\nThe original changes_over_time.py writes to run_results/ folder.")
         print("Please ensure you're in the correct working directory.")

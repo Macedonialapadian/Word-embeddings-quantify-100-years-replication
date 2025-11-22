@@ -37,6 +37,6 @@ def normalize(filename, filename_output):
     print(countnorm0, countnormal)
 
 if __name__ == "__main__":
-    filename = "vectors/raw/glove.42B.300d.txt"
-    filename_output = "vectors/normalized_clean/vectorscommoncrawlglove.txt"
+    filename = "../data/vectors/raw/glove.42B.300d.txt"
+    filename_output = "../data/vectors/normalized_clean/vectorscommoncrawlglove.txt"
     normalize(filename, filename_output)

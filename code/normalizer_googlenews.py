@@ -33,6 +33,6 @@ def normalize_googlenews(bin_filename, filename_output):
     print(countnorm0, countnormal)
 
 if __name__ == "__main__":
-    filename = "vectors/raw/GoogleNews-vectors-negative300.bin"
-    filename_output = "vectors/normalized_clean/vectorsGoogleNews_exactclean.txt"
+    filename = "../data/vectors/raw/GoogleNews-vectors-negative300.bin"
+    filename_output = "../data/vectors/normalized_clean/vectorsGoogleNews_exactclean.txt"
     normalize_googlenews(filename, filename_output)

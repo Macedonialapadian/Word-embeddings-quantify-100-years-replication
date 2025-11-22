@@ -32,7 +32,7 @@ def save_files(yrs, oldloc, newloc, label):
 
 if __name__ == "__main__":
     yrs = range(1910, 2000, 10)
-    newloc = 'vectors/normalized_clean/'
-    all_english_loc = 'vectors/raw/all_english/'
+    newloc = '../../data/vectors/normalized_clean/'
+    all_english_loc = '../../data/vectors/raw/all_english/'
     save_files(yrs, all_english_loc, newloc, 'sgns')
     # here we still make the all english data with label sgns so that we can directly use changes_over_time.py without any modification

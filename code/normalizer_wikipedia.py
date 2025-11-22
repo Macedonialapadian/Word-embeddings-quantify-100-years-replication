@@ -41,6 +41,6 @@ def normalize(filename, filename_output):
     print(countnorm0, countnormal)
 
 if __name__ == "__main__":
-    filename = "vectors/raw/wiki_giga_2024_300_MFT20_vectors_seed_2024_alpha_0.75_eta_0.05_combined.txt"
-    filename_output = "vectors/normalized_clean/vectorswikipedia.txt"
+    filename = "../data/vectors/raw/wiki_giga_2024_300_MFT20_vectors_seed_2024_alpha_0.75_eta_0.05_combined.txt"
+    filename_output = "../data/vectors/normalized_clean/vectorswikipedia.txt"
     normalize(filename, filename_output)
