@@ -4,6 +4,8 @@ This repository contains a replication project for the **Text as Data** course, 
 
 This project aims at replicating Garg, Nikhil, et al. "Word embeddings quantify 100 years of gender and ethnic stereotypes." Proceedings of the National Academy of Sciences 115.16 (2018): E3635-E3644. which can be find through this [link](https://www.pnas.org/doi/pdf/10.1073/pnas.1720347115)
 
+The presentation and research report is placed under the 'documents' folder
+
 ## Directory Setup
 
 - **Project root:** All scripts should be run from the `code/` directory.
