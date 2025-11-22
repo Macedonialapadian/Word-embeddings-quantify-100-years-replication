@@ -1,6 +1,6 @@
 # Ignore the heavy data folders
 data/vectors/
-output/extend_figure/data/
+output/plots/extend_figure/data/
 
 # Ignore other common large files just in case (optional safety)
 *.npy
